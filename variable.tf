@@ -12,6 +12,13 @@ variable "s3_bucket" {
     default = ""
 }
 
+variable "s3_acl" {
+    description = "S3 bucket for terraform-state-backend ACL"
+    type = string
+    default = ""
+
+}
+
 variable "dynamodb_table" {
     description = "DynamoDB table for terraform-state-backend "
     type = string
