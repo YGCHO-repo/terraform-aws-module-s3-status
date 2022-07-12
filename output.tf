@@ -1,3 +1,5 @@
+# Terraform AWS Module S3
+# Output
 output "region" {
     description = "AWS Region"
     value = var.region

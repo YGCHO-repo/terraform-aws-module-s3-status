@@ -1,3 +1,5 @@
+# Terraform AWS Module S3
+# Variable
 variable "region" {
     description = "AWS Region"
     type = string
