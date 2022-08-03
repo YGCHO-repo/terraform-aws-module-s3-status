@@ -30,6 +30,10 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "this" {
             kms_master_key_id = aws_kms_key.this.arn
             sse_algorithm = "aws:kms"
         }
+        
+        # apply_server_side_encryption_by_default {
+        #     sse_algorithm = "AES256" 
+        # }
     }
 }
 
