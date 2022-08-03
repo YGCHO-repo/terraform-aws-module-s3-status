@@ -19,3 +19,15 @@ output "kms_key" {
     description = "AWS KMS KEY"
     value = aws_kms_key.this.arn
 }
+
+output "s3_bucket_acl" {
+  value = aws_s3_bucket_acl.name.acl
+}
+
+output "s3_versioning" {
+  value = aws_s3_bucket_versioning.this.versioning_configuration
+}
+
+output "s3_server_side_encryption_configuration" {
+  value = aws_s3_bucket_server_side_encryption_configuration.this.rule
+}
