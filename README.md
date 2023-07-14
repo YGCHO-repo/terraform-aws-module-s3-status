@@ -3,10 +3,10 @@
 Create by terraform module S3
 
 ## Usage
-
+---
 ### Create S3 "Terraform-State-Backend"
-
-main.tf
+---
+#### main.tf
 
 ```hcl
 module "terraform-state-backend" {
@@ -21,8 +21,7 @@ module "terraform-state-backend" {
     tags = var.tags
 }
 ```
-
-variables.tf
+#### variables.tf
 
 ```hcl
 variable "region" {
@@ -52,5 +51,36 @@ variable "dynamodb_table" {
 
 variable "tags" {
   type = map(string)
+}
+```
+#### terraform.tf
+```hcl
+terraform {
+  required_version = ">= 0.15.0"
+
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 4.20.1"
+    }
+  }
+}
+provider "aws" {
+  region = var.region
+}
+```
+
+#### terraform.tfvars
+```hcl
+region         = "ap-northeast-2"
+s3_bucket      = "test-terraform-state-backend-ygcho"
+s3_acl         = "private"
+dynamodb_table = "test-terraform-state-locks"
+
+tags = {
+  "CreatedByTerraform" = "true",
+  "purpose"            = "TEST",
+  "resource"           = "S3",
+  "owner"              = "YGCHO"
 }
 ```
